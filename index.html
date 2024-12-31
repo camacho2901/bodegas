@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bodega Destilería Artesanal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sarala&display=swap" rel="stylesheet">
+  <style>
+    /* Configuración básica */
+    body {
+      font-family: 'Sarala', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #3c8ce7, #00eaff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    form {
+      width: 90%;
+      max-width: 500px;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid #e0e0e0;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Títulos y etiquetas */
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+      font-size: 2rem;
+      text-transform: uppercase;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: #000;
+    }
+
+    /* Campos de entrada */
+    input, select, textarea {
+      width: calc(100% - 20px);
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease-in-out;
+      box-sizing: border-box;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #25d366;
+      box-shadow: 0 0 8px rgba(37, 211, 102, 0.5);
+      background: #f1f8e9;
+    }
+
+    textarea {
+      resize: none;
+      height: 120px;
+    }
+
+    /* Campo de celular con bandera */
+    .input-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .input-group img {
+      width: 30px;
+      height: 20px;
+      border-radius: 3px;
+    }
+
+    .input-group input {
+      flex: 1;
+      margin-bottom: 0;
+    }
+
+    /* Botón */
+    button {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(to right, #25d366, #1da851);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out, background 0.3s ease-in-out;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #1da851, #128c7e);
+      transform: scale(1.05);
+    }
+
+    /* Leyenda */
+    .leyenda {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 0.9rem;
+      color: #555;
+      font-style: italic;
+    }
+
+    /* Animación del formulario */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <form id="formulario">
+    <h2>Bodega Destilería Artesanal</h2>
+    
+    <label for="nom">Nombre:</label>
+    <input type="text" id="nom" name="nom" placeholder="Tu nombre" required>
+
+    <label for="cel">Celular:</label>
+    <div class="input-group">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Flag_of_Bolivia.svg" alt="Bolivia">
+      <input type="tel" id="cel" name="cel" placeholder="Tu celular" required>
+    </div>
+
+    <label for="ciu">Ciudad:</label>
+    <select id="ciu" name="ciu" required>
+      <option value="" disabled selected>Selecciona tu ciudad</option>
+      <option value="Santa Cruz">Santa Cruz</option>
+      <option value="La Paz">La Paz</option>
+      <option value="Oruro">Oruro</option>
+      <option value="Cochabamba">Cochabamba</option>
+      <option value="Sucre">Sucre</option>
+      <option value="Potosi">Potosí</option>
+      <option value="Tarija">Tarija</option>
+      <option value="Beni">Beni</option>
+      <option value="Pando">Pando</option>
+    </select>
+
+    <label for="prod">Producto:</label>
+    <select id="prod" name="prod" required>
+      <option value="" disabled selected>Selecciona un producto</option>
+      <option value="Coñac Brandy “El Conquistador”">Coñac Brandy “El Conquistador”</option>
+      <option value="Singani “Don Valentin”">Singani “Don Valentin”</option>
+      <option value="Whiskey de Canela">Whiskey de Canela</option>
+      <option value="Whiskey de Coca Tropical">Whiskey de Coca Tropical</option>
+      <option value="Whisky “Sugar House”">Whisky “Sugar House”</option>
+      <option value="Otros">Otros</option>
+    </select>
+
+    <label for="cant">Cantidad:</label>
+    <input type="number" id="cant" name="cant" placeholder="Cantidad" required>
+
+    <label for="dir">Dirección:</label>
+    <input type="text" id="dir" name="dir" placeholder="Tu dirección" required>
+
+    <label for="obs">Observaciones:</label>
+    <textarea id="obs" name="obs" placeholder="Información adicional"></textarea>
+
+    <button type="button" id="enviar">ENVIAR MI PEDIDO</button>
+    <p class="leyenda">NO OLVIDES ENVIARNOS TU COMPROBANTE DE PAGO</p>
+  </form>
+
+  <script>
+    document.getElementById("enviar").addEventListener("click", function () {
+      const nom = document.getElementById("nom").value;
+      const cel = document.getElementById("cel").value;
+      const ciu = document.getElementById("ciu").value;
+      const prod = document.getElementById("prod").value;
+      const cant = document.getElementById("cant").value;
+      const dir = document.getElementById("dir").value;
+      const obs = document.getElementById("obs").value;
+
+      if (!nom || !cel || !ciu || !prod || !cant || !dir) {
+        alert("Por favor, completa todos los campos obligatorios.");
+        return;
+      }
+
+      const mensaje = `*MI PEDIDO*\n` +
+                      `Nombre: ${nom}\n` +
+                      `Celular: ${cel}\n` +
+                      `Ciudad: ${ciu}\n` +
+                      `Producto: ${prod}\n` +
+                      `Cantidad: ${cant}\n` +
+                      `Dirección: ${dir}\n` +
+                      `Observaciones: ${obs}`;
+
+      const numeroWhatsApp = "59167586386";
+      const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+
+      window.open(url, "_blank");
+    });
+  </script>
+</body>
+</html>
